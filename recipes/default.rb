@@ -32,6 +32,10 @@ service "logstash" do
   action :start
 end
 
+file "/usr/share/logstash/logstash.conf" do
+  action :delete
+end
+
 template "/usr/share/logstash/logstash.conf" do
   source "logstash.conf"
   notifies :restart, "service[logstash]"
