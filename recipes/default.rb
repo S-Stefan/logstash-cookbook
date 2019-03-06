@@ -27,3 +27,12 @@ end
 service "logstash" do
   action :enable
 end
+
+service "logstash" do
+  action :start
+end
+
+template "/usr/share/logstash/logstash.conf" do
+  source "logstash.conf"
+  notifies :restart, "service[logstash]"
+end
