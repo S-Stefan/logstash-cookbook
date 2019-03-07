@@ -21,6 +21,10 @@ describe service "logstash" do
   it { should be_running }
 end
 
+describe file('/usr/share/logstash/logstash.conf') do
+  its(:content) { should match /hosts => "12.0.3.10:9200"/ }
+end
+
 
 
 # This is an example test, replace it with your own test.
